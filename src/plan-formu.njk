@@ -1,0 +1,370 @@
+---
+layout: base.njk
+title: Doğru Plan Formu | MERTDTRAİNİNG
+description: "Hedefine uygun paketi bulmak için danışan bilgi formunu doldur. Ad soyad ve telefon zorunludur."
+active: index.html
+permalink: /plan-formu/
+---
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Plan Formu</span>
+    <h1>Doğru planı birlikte bulalım</h1>
+    <p>Formu doldur; cevaplarına göre sana uygun paketi önerelim. Bilgiler {{ site.email }} adresine iletilir.</p>
+  </div>
+</section>
+
+<section class="section plan-section">
+  <div class="container plan-wrap">
+    <div class="plan-progress" id="planProgress" aria-hidden="true">
+      <div class="plan-progress-bar" id="planProgressBar"></div>
+    </div>
+    <p class="plan-step-label" id="planStepLabel">Adım 1 / 6</p>
+
+    <form
+      class="plan-form"
+      id="planForm"
+      action="https://formsubmit.co/{{ site.email }}"
+      method="POST"
+      novalidate
+    >
+      <input type="hidden" name="_subject" value="Yeni plan formu — {{ site.brand }}" />
+      <input type="hidden" name="_next" value="{{ site.url }}/tesekkurler/" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+      <input type="hidden" name="onerilen_paket" id="planRecommended" value="" />
+      <input type="hidden" name="onerilen_paket_id" id="planRecommendedId" value="" />
+
+      <fieldset class="plan-step is-active" data-step="0">
+        <legend>Kişisel bilgiler</legend>
+        <p class="plan-lead">Merhaba. Sana özel bir yol haritası için birkaç soru. Ad soyad ve telefon zorunlu.</p>
+        <div class="field-grid">
+          <div class="field">
+            <label for="plan-name">Ad Soyad *</label>
+            <input id="plan-name" type="text" name="ad_soyad" autocomplete="name" required />
+          </div>
+          <div class="field">
+            <label for="plan-phone">Telefon *</label>
+            <input id="plan-phone" type="tel" name="telefon" autocomplete="tel" inputmode="tel" required placeholder="05xx xxx xx xx" />
+          </div>
+          <div class="field">
+            <label for="plan-age">Yaş</label>
+            <input id="plan-age" type="number" name="yas" min="10" max="90" inputmode="numeric" />
+          </div>
+          <div class="field">
+            <label for="plan-gender">Cinsiyet (isteğe bağlı)</label>
+            <select id="plan-gender" name="cinsiyet">
+              <option value="">Belirtmek istemiyorum</option>
+              <option value="Kadın">Kadın</option>
+              <option value="Erkek">Erkek</option>
+              <option value="Diğer">Diğer</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="plan-height">Boy (cm)</label>
+            <input id="plan-height" type="number" name="boy_cm" min="100" max="250" step="0.1" inputmode="decimal" />
+          </div>
+          <div class="field">
+            <label for="plan-weight">Güncel kilo (kg)</label>
+            <input id="plan-weight" type="number" name="kilo_kg" min="30" max="250" step="0.1" inputmode="decimal" />
+          </div>
+          <div class="field">
+            <label for="plan-target-weight">Varsa hedef kilo</label>
+            <input id="plan-target-weight" type="number" name="hedef_kilo" min="30" max="250" step="0.1" inputmode="decimal" />
+          </div>
+          <div class="field">
+            <label for="plan-job">Meslek</label>
+            <input id="plan-job" type="text" name="meslek" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="plan-work">Günlük çalışma düzenin</label>
+          <textarea id="plan-work" name="calisma_duzeni" rows="3" placeholder="Örn. masa başı, vardiyalı, sahada…"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="plan-step" data-step="1" hidden>
+        <legend>Hedeflerin</legend>
+        <div class="field">
+          <span class="field-label">Öncelikli hedefin nedir?</span>
+          <div class="choice-grid" role="group" aria-label="Hedefler">
+            {% set goals = [
+              "Kilo vermek",
+              "Yağ oranını azaltmak",
+              "Kas kütlesi kazanmak",
+              "Kilo almak",
+              "Güçlenmek",
+              "Kondisyon geliştirmek",
+              "Genel sağlığımı iyileştirmek",
+              "Spor performansımı geliştirmek",
+              "Sıçrama geliştirmek",
+              "Çeviklik / yön değiştirme",
+              "Diğer"
+            ] %}
+            {% for g in goals %}
+            <label class="choice">
+              <input type="checkbox" name="hedefler" value="{{ g }}" />
+              <span>{{ g }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="field">
+          <label for="plan-goal-detail">Ulaşmak istediğin hedefi kısaca açıkla</label>
+          <textarea id="plan-goal-detail" name="hedef_detay" rows="3"></textarea>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="plan-timeline">Bu hedefe süre koydun mu?</label>
+            <select id="plan-timeline" name="hedef_suresi">
+              <option value="">Belirsiz</option>
+              <option value="1 ay">1 ay</option>
+              <option value="3 ay">3 ay</option>
+              <option value="6 ay">6 ay</option>
+              <option value="1 yıl+">1 yıl+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="plan-metric">En önemli gelişim ölçütün</label>
+            <input id="plan-metric" type="text" name="gelisim_olcutu" placeholder="Kilo, bel, performans, his…" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="plan-step" data-step="2" hidden>
+        <legend>Sağlık durumun</legend>
+        <div class="field">
+          <label for="plan-health">Tanı konmuş sağlık sorunun var mı?</label>
+          <textarea id="plan-health" name="saglik_sorunu" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label for="plan-meds">Düzenli ilaç veya takviye kullanıyor musun?</label>
+          <textarea id="plan-meds" name="ilac_takviye" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label for="plan-injury">Sakatlık, ameliyat, kas veya eklem problemin var mı?</label>
+          <textarea id="plan-injury" name="sakatlik" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label for="plan-symptoms">Egzersizde göğüs ağrısı, baş dönmesi, bayılma veya olağan dışı nefes darlığı yaşadın mı?</label>
+          <textarea id="plan-symptoms" name="egzersiz_belirtileri" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label for="plan-doctor">Doktorunun egzersiz / beslenme kısıtlaması var mı?</label>
+          <textarea id="plan-doctor" name="doktor_kisitlama" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label for="plan-allergy">Besin alerjin veya intoleransın var mı?</label>
+          <textarea id="plan-allergy" name="alerji" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="plan-step" data-step="3" hidden>
+        <legend>Yaşam &amp; antrenman</legend>
+        <div class="field">
+          <span class="field-label">Günlük yaşamın nasıl geçiyor?</span>
+          <div class="choice-grid choice-grid-sm" role="radiogroup" aria-label="Aktivite düzeyi">
+            {% for a in ["Genellikle oturarak", "Gün içinde ayakta", "Sürekli hareketli", "Fiziksel olarak yoğun"] %}
+            <label class="choice">
+              <input type="radio" name="aktivite" value="{{ a }}" />
+              <span>{{ a }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="plan-steps">Ortalama günlük adım</label>
+            <input id="plan-steps" type="text" name="gunluk_adim" placeholder="Örn. 4000–6000" />
+          </div>
+          <div class="field">
+            <label for="plan-sleep">Ortalama uyku süresi</label>
+            <input id="plan-sleep" type="text" name="uyku_suresi" placeholder="Örn. 6–7 saat" />
+          </div>
+          <div class="field">
+            <label for="plan-sleep-q">Uyku kaliten</label>
+            <select id="plan-sleep-q" name="uyku_kalitesi">
+              <option value="">Seç</option>
+              <option value="İyi">İyi</option>
+              <option value="Orta">Orta</option>
+              <option value="Kötü">Kötü</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="plan-stress">Günlük stres düzeyin</label>
+            <select id="plan-stress" name="stres">
+              <option value="">Seç</option>
+              <option value="Düşük">Düşük</option>
+              <option value="Orta">Orta</option>
+              <option value="Yüksek">Yüksek</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="plan-days">Haftada kaç gün antrenman?</label>
+            <select id="plan-days" name="antrenman_gun">
+              <option value="">Seç</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6+">6+</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="plan-session">Bir antrenmana ayırabileceğin süre</label>
+            <input id="plan-session" type="text" name="antrenman_suresi" placeholder="Örn. 45–60 dk" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="plan-schedule">Uygun günler ve saatler</label>
+          <textarea id="plan-schedule" name="uygun_gunler" rows="2"></textarea>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="plan-active">Şu anda düzenli spor yapıyor musun?</label>
+            <select id="plan-active" name="duzenli_spor">
+              <option value="">Seç</option>
+              <option value="Evet">Evet</option>
+              <option value="Hayır">Hayır</option>
+              <option value="Ara ara">Ara ara</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="plan-experience">Ağırlık antrenmanı deneyimin var mı?</label>
+            <select id="plan-experience" name="agirlik_deneyimi">
+              <option value="">Seç</option>
+              <option value="Yok">Yok</option>
+              <option value="Başlangıç">Başlangıç</option>
+              <option value="Orta">Orta</option>
+              <option value="İleri">İleri</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="plan-sports">Hangi spor branşlarıyla ilgilendin / ilgileniyorsun?</label>
+          <input id="plan-sports" type="text" name="spor_branslari" placeholder="Basketbol, voleybol, futbol…" />
+        </div>
+        <div class="field">
+          <span class="field-label">Antrenmanlarını nerede yapacaksın?</span>
+          <div class="choice-grid choice-grid-sm" role="group" aria-label="Antrenman yeri">
+            {% for p in ["Spor salonu", "Ev", "Açık alan", "Diğer"] %}
+            <label class="choice">
+              <input type="checkbox" name="antrenman_yeri" value="{{ p }}" />
+              <span>{{ p }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="field">
+          <label for="plan-equip">Evde çalışacaksan hangi ekipmanlara sahipsin?</label>
+          <textarea id="plan-equip" name="ekipman" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="plan-step" data-step="4" hidden>
+        <legend>Beslenme &amp; beklentiler</legend>
+        <div class="field-grid">
+          <div class="field">
+            <label for="plan-meals">Günlük ana öğün sayısı</label>
+            <input id="plan-meals" type="text" name="ana_ogun" />
+          </div>
+          <div class="field">
+            <label for="plan-water">Günlük ortalama su (litre)</label>
+            <input id="plan-water" type="text" name="su_litre" />
+          </div>
+          <div class="field">
+            <label for="plan-out">Haftada kaç kez dışarıdan yemek?</label>
+            <input id="plan-out" type="text" name="disarda_yemek" />
+          </div>
+          <div class="field">
+            <label for="plan-diet">Beslenme tercihin</label>
+            <select id="plan-diet" name="beslenme_tercihi">
+              <option value="">Seç</option>
+              <option value="Her şeyi tüketiyorum">Her şeyi tüketiyorum</option>
+              <option value="Vejetaryen">Vejetaryen</option>
+              <option value="Vegan">Vegan</option>
+              <option value="Diğer">Diğer</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="plan-breakfast">Genellikle kahvaltıda ne yiyorsun?</label>
+          <input id="plan-breakfast" type="text" name="kahvalti" />
+        </div>
+        <div class="field">
+          <label for="plan-lunch">Öğle yemeğinde ne tüketiyorsun?</label>
+          <input id="plan-lunch" type="text" name="ogle" />
+        </div>
+        <div class="field">
+          <label for="plan-dinner">Akşam yemeğinde ne tüketiyorsun?</label>
+          <input id="plan-dinner" type="text" name="aksam" />
+        </div>
+        <div class="field">
+          <label for="plan-snacks">Ara öğünlerinde neler tüketiyorsun?</label>
+          <input id="plan-snacks" type="text" name="ara_ogun" />
+        </div>
+        <div class="field">
+          <label for="plan-drinks">Çay, kahve ve şekerli içecek tüketimin nasıl?</label>
+          <input id="plan-drinks" type="text" name="icecek" />
+        </div>
+        <div class="field">
+          <label for="plan-avoid">Tüketmediğin / sevmediğin besinler</label>
+          <textarea id="plan-avoid" name="sevilmeyen_besin" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <span class="field-label">Beslenmeni zorlaştıran durumlar</span>
+          <div class="choice-grid choice-grid-sm" role="group" aria-label="Beslenme engelleri">
+            {% for b in ["İş yoğunluğu", "Zaman yetersizliği", "İştah kontrolü", "Dışarıda yemek", "Diğer"] %}
+            <label class="choice">
+              <input type="checkbox" name="beslenme_engel" value="{{ b }}" />
+              <span>{{ b }}</span>
+            </label>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="field">
+          <label for="plan-expect">Programdan temel beklentin nedir?</label>
+          <textarea id="plan-expect" name="beklenti" rows="2"></textarea>
+        </div>
+        <div class="field">
+          <label for="plan-extra">Eklemek istediğin başka bir bilgi var mı?</label>
+          <textarea id="plan-extra" name="ek_bilgi" rows="2"></textarea>
+        </div>
+      </fieldset>
+
+      <fieldset class="plan-step" data-step="5" hidden>
+        <legend>Öneri &amp; gönder</legend>
+        <div class="plan-result" id="planResult">
+          <span class="eyebrow">Sana uygun paket</span>
+          <h2 id="planResultTitle">—</h2>
+          <p id="planResultDesc"></p>
+          <ul class="plan-result-features" id="planResultFeatures"></ul>
+          <p class="plan-result-note" id="planResultNote"></p>
+          <a class="btn btn-primary btn-block plan-result-wa" id="planResultWa" href="/iletisim/">Detaylı bilgi için WhatsApp’tan yazınız</a>
+        </div>
+        <div class="field field-check">
+          <input id="plan-kvkk" type="checkbox" name="kvkk" value="onay" required />
+          <label for="plan-kvkk">
+            <a href="/gizlilik/" target="_blank" rel="noopener noreferrer">Gizlilik ve KVKK</a>
+            metnini okudum; bilgilerin program önerisi ve dönüş için işlenmesini kabul ediyorum.
+          </label>
+        </div>
+        <p class="form-note">Gönderince form {{ site.email }} adresine düşer. 24 saat içinde dönüş yapılır.</p>
+      </fieldset>
+
+      <div class="plan-nav">
+        <button type="button" class="btn btn-ghost" id="planPrev" hidden>Geri</button>
+        <button type="button" class="btn btn-primary" id="planNext">Devam</button>
+        <button type="submit" class="btn btn-primary" id="planSubmit" hidden>Formu Gönder</button>
+      </div>
+      <p class="plan-error" id="planError" hidden></p>
+    </form>
+
+    <aside class="plan-aside">
+      <h3>Önemli bilgilendirme</h3>
+      <p>Paylaştığın bilgiler hedeflerine uygun planlama için kullanılır. Bilmediğin alanları boş bırakabilirsin.</p>
+      <p>Sağlıkla ilgili önemli bir kısıtlama varsa program hazırlanmadan önce belirt. Gerektiğinde sağlık uzmanı değerlendirmesi alınmalıdır.</p>
+      <p class="plan-aside-tag">Bilimsel yaklaşım · Kişiye özel planlama · Sürdürülebilir gelişim</p>
+    </aside>
+  </div>
+</section>

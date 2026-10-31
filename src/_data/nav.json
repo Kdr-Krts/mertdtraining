@@ -1,0 +1,9 @@
+[
+  { "label": "Anasayfa", "href": "/", "page": "index.html" },
+  { "label": "Hakkımda", "href": "/hakkimda/", "page": "hakkimda.html" },
+  { "label": "Paketler", "href": "/egitimler/", "page": "egitimler.html" },
+  { "label": "Nasıl Çalışır", "href": "/nasil-calisir/", "page": "nasil.html" },
+  { "label": "Blog", "href": "/blog/", "page": "blog.html" },
+  { "label": "Yorumlar", "href": "/yorumlar/", "page": "yorumlar.html" },
+  { "label": "İletişim", "href": "/iletisim/", "page": "iletisim.html" }
+]

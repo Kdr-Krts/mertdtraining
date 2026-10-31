@@ -1,0 +1,14 @@
+{% set imgAlt = alt or "Mert Duman" %}
+{% set imgLoading = loading or "lazy" %}
+{% set imgClass = className or "coach-photo" %}
+<img
+  class="{{ imgClass }}"
+  src="/assets/img/mert-duman-portre-720.webp"
+  srcset="/assets/img/mert-duman-portre-360.webp 360w, /assets/img/mert-duman-portre-540.webp 540w, /assets/img/mert-duman-portre-720.webp 720w"
+  sizes="{{ sizes or '(max-width: 760px) 70vw, 340px' }}"
+  width="720"
+  height="905"
+  alt="{{ imgAlt }}"
+  loading="{{ imgLoading }}"
+  decoding="async"
+/>

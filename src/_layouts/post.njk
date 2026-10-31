@@ -1,0 +1,39 @@
+---
+layout: base.njk
+active: blog.html
+---
+<article class="section post">
+  <div class="container post-wrap">
+    <a class="post-back" href="/blog/">← Blog</a>
+    <header class="post-header">
+      {% if category %}<span class="eyebrow">{{ category }}</span>{% endif %}
+      <h1>{{ title }}</h1>
+      <p class="post-meta">
+        <time datetime="{{ page.date | dateIso }}">{{ page.date | dateTr }}</time>
+        <span>{{ content | readingTime }} dk okuma</span>
+      </p>
+      {% if description %}<p class="post-lead">{{ description }}</p>{% endif %}
+    </header>
+    <div class="post-body">
+      {{ content | safe }}
+    </div>
+    <p class="post-note">Bu yazı genel bilgilendirme amaçlıdır. Program, değerlendirme sonrası kişiye özel hazırlanır.</p>
+    <div class="post-cta">
+      <a href="/egitimler/" class="btn btn-primary">Paketleri İncele</a>
+      <a href="/iletisim/" class="btn btn-ghost">İletişime Geç</a>
+    </div>
+  </div>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": {{ title | json }},
+    "description": {{ description | json }},
+    "datePublished": "{{ page.date | dateIso }}",
+    "inLanguage": "tr-TR",
+    "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+    "author": { "@id": "{{ site.url }}/#person" },
+    "publisher": { "@id": "{{ site.url }}/#person" }
+  }
+  </script>
+</article>

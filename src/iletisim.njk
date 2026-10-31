@@ -1,0 +1,85 @@
+---
+layout: base.njk
+title: İletişim | MERTDTRAİNİNG
+description: "Online koçluk, vücut dönüşümü veya atletik performans için MERTDTRAİNİNG ile iletişime geç."
+active: iletisim.html
+permalink: /iletisim/
+---
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">İletişim</span>
+    <h1>Birlikte Başlayalım</h1>
+    <p>Başlangıç noktanı birlikte belirleyelim. Formu doldur, 24 saat içinde dönüş yapayım.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container contact">
+    <div>
+      <h2>Online koçluk veya<br />performans çalışması için yaz.</h2>
+      <p>Hedefin yağ kaybı, kas kazanımı veya sportif performans olsun — sana uygun sistemi birlikte oluştururuz.</p>
+      <div class="contact-info">
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+        {% if site.whatsapp %}
+        <a href="https://wa.me/{{ site.whatsapp }}" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        {% endif %}
+        <span class="contact-location">{{ site.location }}</span>
+        {% if site.socials and site.socials.length %}
+        <div class="socials">
+          {% for social in site.socials %}
+          {% if social.href %}
+          <a href="{{ social.href }}" target="_blank" rel="noopener noreferrer">{{ social.label }}</a>
+          {% else %}
+          <button type="button" class="social-btn" aria-disabled="true">{{ social.label }}</button>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <form
+      class="contact-form"
+      id="contactForm"
+      action="https://formsubmit.co/{{ site.email }}"
+      method="POST"
+    >
+      <input type="hidden" name="_subject" value="Yeni iletişim — {{ site.brand }}" />
+      <input type="hidden" name="_next" value="{{ site.url }}/tesekkurler/" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true" />
+
+      <div class="field">
+        <label for="contact-name">Ad Soyad</label>
+        <input id="contact-name" type="text" name="name" autocomplete="name" required />
+      </div>
+      <div class="field">
+        <label for="contact-email">E-posta</label>
+        <input id="contact-email" type="email" name="email" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <label for="contact-topic">Konu</label>
+        <select id="contact-topic" name="topic" required>
+          <option value="">Konu seç</option>
+          <option value="Online Fitness Koçluğu">Online Fitness Koçluğu</option>
+          <option value="Atletik Performans">Atletik Performans</option>
+          <option value="Basketbol Antrenmanı">Basketbol Antrenmanı</option>
+          <option value="Kulüp / Takım İş Birliği">Kulüp / Takım İş Birliği</option>
+          <option value="Diğer">Diğer</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="contact-message">Mesajın</label>
+        <textarea id="contact-message" name="message" rows="4" required></textarea>
+      </div>
+      <div class="field field-check">
+        <input id="contact-kvkk" type="checkbox" name="kvkk" value="onay" required />
+        <label for="contact-kvkk">
+          <a href="/gizlilik/" target="_blank" rel="noopener noreferrer">Gizlilik ve KVKK</a>
+          metnini okudum; kişisel verilerimin talebime yanıt için işlenmesini kabul ediyorum.
+        </label>
+      </div>
+      <button class="btn btn-primary" type="submit">Gönder</button>
+      <p class="form-note">Form <a href="https://formsubmit.co" target="_blank" rel="noopener noreferrer">FormSubmit</a> üzerinden {{ site.email }} adresine iletilir.</p>
+    </form>
+  </div>
+</section>

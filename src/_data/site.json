@@ -1,0 +1,16 @@
+{
+  "name": "Mert Duman",
+  "brand": "MERTDTRAİNİNG",
+  "url": "https://mertdtraining.com",
+  "email": "peakform360co@gmail.com",
+  "location": "İzmir, Türkiye",
+  "ogImage": "/assets/img/mert-duman-portre.webp",
+  "ogImageWidth": 720,
+  "ogImageHeight": 905,
+  "whatsapp": "905072394696",
+  "cartEnabled": false,
+  "socials": [
+    { "label": "Instagram", "href": "https://www.instagram.com/mertdtraining/" },
+    { "label": "LinkedIn", "href": "https://www.linkedin.com/in/mert-duman-99798a169/" }
+  ]
+}

@@ -1,0 +1,34 @@
+---
+layout: base.njk
+title: Blog | MERTDTRAİNİNG
+description: "Sıçrama, plyometrik, ağırlık ve yön değiştirme üzerine Mert Duman yazıları."
+active: blog.html
+permalink: /blog/
+---
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Blog</span>
+    <h1>Yazılar</h1>
+    <p>Sıçrama, yön değiştirme ve atletik performans üzerine notlar.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="blog-list">
+      {% for post in collections.blog | reverse %}
+      <a class="blog-card" href="{{ post.url }}">
+        <time datetime="{{ post.date | dateIso }}">{{ post.date | dateTr }}</time>
+        <div>
+          <span class="blog-cat">{{ post.data.category }}</span>
+          <h2>{{ post.data.title }}</h2>
+          <p>{{ post.data.description }}</p>
+        </div>
+        <span class="go">Oku →</span>
+      </a>
+      {% else %}
+      <p>Henüz yazı yok.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>

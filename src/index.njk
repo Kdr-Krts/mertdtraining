@@ -1,0 +1,139 @@
+---
+layout: base.njk
+title: MERTDTRAİNİNG | Atletik Performans Antrenörü & Online Fitness Koçu
+description: "MERTDTRAİNİNG — fitness, vücut dönüşümü, kas gelişimi, online koçluk ve atletik performans. Kişiye özel, ölçülebilir ve sürdürülebilir antrenman sistemleri."
+active: index.html
+permalink: /
+---
+<section class="hero">
+  <div class="hero-frame">
+    <img
+      class="hero-banner"
+      src="/assets/img/hero-banner.webp"
+      srcset="/assets/img/hero-banner-960.webp 960w, /assets/img/hero-banner-1440.webp 1440w, /assets/img/hero-banner-1920.webp 1920w"
+      sizes="100vw"
+      width="2752"
+      height="1536"
+      alt=""
+      decoding="async"
+      fetchpriority="high"
+    />
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <p class="hero-brand">{{ site.brand }}</p>
+        <h1>Doğru plan,<br /><span>sürdürülebilir</span><br />gelişim.</h1>
+        <p class="hero-lead">Yağ kaybı, kas kazanımı veya sportif performans — başlangıç noktanı belirleyerek sana uygun sistemi birlikte oluşturuyoruz.</p>
+        <div class="hero-cta">
+          <a href="/egitimler/" class="btn btn-primary">Paketleri İncele</a>
+          <a href="/plan-formu/" class="btn btn-ghost">Doğru plan için formu doldur</a>
+        </div>
+      </div>
+      <ul class="feature-labels" aria-label="Hizmet alanları">
+        <li>
+          <strong>Atletik <br />Performans</strong>
+          <span>Daha güçlü, daha hazır.</span>
+        </li>
+        <li>
+          <strong>Kondisyon &amp; <br />Dayanıklılık</strong>
+          <span>Enerjini artır, sınırlarını zorla.</span>
+        </li>
+        <li>
+          <strong>Beslenme <br />Desteği</strong>
+          <span>Doğru beslen, verimini artır.</span>
+        </li>
+        <li>
+          <strong>Online <br />Koçluk</strong>
+          <span>Her yerden, kesintisiz destek.</span>
+        </li>
+        <li>
+          <strong>Kişiye Özel <br />Programlar</strong>
+          <span>Hedefine uygun, sana özel plan.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container about">
+    <div class="about-visual">
+      {% set loading = "eager" %}
+      {% include "coach-image.njk" %}
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">Hakkımda</span>
+      <h2>Mert Duman</h2>
+      <p class="about-roles">Atletik Performans Antrenörü | Online Fitness Koçu</p>
+      <p>1996 Nazilli doğumluyum. Celal Bayar Üniversitesi Spor Bilimleri Fakültesi mezunuyum. Yaklaşık 10 yıldır fitness, kişisel antrenman ve atletik performans alanında çalışıyorum.</p>
+      <p>Hazır programlar yerine kişiye özel, ölçülebilir ve sürdürülebilir sistemler kuruyorum.</p>
+      <div class="about-teaser-cta">
+        <a href="/hakkimda/" class="btn btn-primary">Devamını Oku</a>
+        <a href="/egitimler/" class="btn btn-ghost">Paketleri İncele</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Keşfet</span>
+      <h2>Yol haritası</h2>
+    </div>
+    <div class="link-row">
+      <a href="/hakkimda/">
+        <div class="num">01</div>
+        <h3>Hakkımda</h3>
+        <p>Deneyim, çalışma alanları ve koçluk anlayışım.</p>
+        <span class="go">İncele →</span>
+      </a>
+      <a href="/nasil-calisir/">
+        <div class="num">02</div>
+        <h3>Nasıl Çalışır</h3>
+        <p>Değerlendirme, planlama, uygulama ve takip adımları.</p>
+        <span class="go">İncele →</span>
+      </a>
+      <a href="/egitimler/">
+        <div class="num">03</div>
+        <h3>Paketler</h3>
+        <p>Transformation, atletik performans ve mikro program paketleri.</p>
+        <span class="go">İncele →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Blog</span>
+      <h2>Yazılar</h2>
+      <p>Sıçrama, yön değiştirme ve atletik performans üzerine notlar.</p>
+    </div>
+    <div class="blog-list">
+      {% for post in collections.blog | reverse %}
+      {% if loop.index0 < 3 %}
+      <a class="blog-card" href="{{ post.url }}">
+        <time datetime="{{ post.date | dateIso }}">{{ post.date | dateTr }}</time>
+        <div>
+          <span class="blog-cat">{{ post.data.category }}</span>
+          <h3>{{ post.data.title }}</h3>
+          <p>{{ post.data.description }}</p>
+        </div>
+        <span class="go">Oku →</span>
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container cta-band">
+    <span class="eyebrow">Başlayalım</span>
+    <h2>Hedefine uygun sistemi birlikte kuralım.</h2>
+    <p>Online koçluk, vücut dönüşümü veya atletik performans — formunu bırak, 24 saat içinde dönüş yapayım.</p>
+    <a href="/iletisim/" class="btn btn-primary">İletişime Geç</a>
+  </div>
+</section>

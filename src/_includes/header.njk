@@ -1,0 +1,30 @@
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="logo" aria-label="{{ site.brand }}">
+      <img
+        class="logo-img"
+        src="/assets/img/md-logo.webp"
+        srcset="/assets/img/md-logo-240.webp 240w, /assets/img/md-logo-480.webp 480w"
+        sizes="140px"
+        width="140"
+        height="70"
+        alt="{{ site.brand }}"
+        decoding="async"
+      />
+    </a>
+    <nav class="nav-links" id="navLinks">
+      {% for item in nav %}
+      <a href="{{ item.href }}" data-page="{{ item.page }}"{% if active == item.page %} class="active"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+    <div class="nav-actions">
+      {% if site.cartEnabled %}
+      <button class="cart-btn" id="cartOpen" aria-label="Sepeti aç">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+      {% endif %}
+      <button class="menu-btn" id="menuBtn" aria-label="Menü">☰</button>
+    </div>
+  </div>
+</header>

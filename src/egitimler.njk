@@ -1,0 +1,90 @@
+---
+layout: base.njk
+title: Paketler | MERTDTRAİNİNG
+description: "Transformation, Athletic Performance ve özel mikro program paketleri — MERTDTRAİNİNG."
+active: egitimler.html
+permalink: /egitimler/
+---
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Program Paketleri</span>
+    <h1>Paketler</h1>
+    <p>Tüm programlar online sunulur. Transformation, atletik performans ve hedefe özel mikro paketler.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="filters" id="filters" role="group" aria-label="Paket filtreleri">
+      <button type="button" class="chip active" data-filter="all" aria-pressed="true">Tümü</button>
+      <button type="button" class="chip" data-filter="transform" aria-pressed="false">Transformation</button>
+      <button type="button" class="chip" data-filter="athletic" aria-pressed="false">Athletic Performance</button>
+      <button type="button" class="chip" data-filter="mikro" aria-pressed="false">Özel Mikro</button>
+    </div>
+    <div class="products" id="products">
+      {% for p in products %}
+      {% set waText = "Merhaba, " + p.title + " paketi hakkında detaylı bilgi almak istiyorum." %}
+      <article
+        class="product"
+        data-category="{{ p.category }}"
+        data-id="{{ p.id }}"
+        style="border-color:{{ p.accent }}44"
+      >
+        <div class="product-cover" style="background:linear-gradient(145deg,{{ p.color[0] }},{{ p.color[1] }})">
+          {% if p.tag %}<span class="tag">{{ p.tag }}</span>{% endif %}
+          <span class="level">{{ p.level }}</span>
+          {{ p.title }}
+        </div>
+        <div class="product-body">
+          <h3>{{ p.title }}</h3>
+          <p>{{ p.desc }}</p>
+          <ul class="product-features">
+            {% for f in p.features %}
+            <li>{{ f }}</li>
+            {% endfor %}
+          </ul>
+          <div class="product-foot">
+            {% if site.whatsapp %}
+            <a
+              class="btn btn-primary btn-block product-wa"
+              href="https://wa.me/{{ site.whatsapp }}?text={{ waText | urlencode }}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Detaylı bilgi için WhatsApp’tan yazınız</a>
+            {% else %}
+            <a class="btn btn-primary btn-block product-wa" href="/iletisim/">Detaylı bilgi için WhatsApp’tan yazınız</a>
+            {% endif %}
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="packages-note">Tüm programlar online olarak sunulur. Eğitim materyalleri pakete dahildir. Fiyat ve başlangıç için WhatsApp’tan yazman yeterli.</p>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "MERTDTRAİNİNG Program Paketleri",
+  "itemListElement": [
+    {% for p in products %}
+    {
+      "@type": "ListItem",
+      "position": {{ loop.index }},
+      "item": {
+        "@type": "Service",
+        "name": {{ p.title | json | safe }},
+        "description": {{ p.desc | json | safe }},
+        "provider": {
+          "@type": "Person",
+          "name": {{ site.name | json | safe }}
+        },
+        "url": "{{ site.url }}/egitimler/"
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>

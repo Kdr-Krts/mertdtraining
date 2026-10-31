@@ -1,0 +1,62 @@
+{% if site.cartEnabled %}
+<div class="overlay" id="overlay" hidden></div>
+<aside
+  class="drawer"
+  id="drawer"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cartTitle"
+  aria-hidden="true"
+  inert
+>
+  <div class="drawer-head">
+    <h3 id="cartTitle">Sepetim</h3>
+    <button type="button" id="cartClose" aria-label="Sepeti kapat">✕</button>
+  </div>
+  <div class="drawer-body" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="total"><span>Toplam</span><strong id="cartTotal">₺0</strong></div>
+    <button type="button" class="btn btn-primary btn-block" id="checkoutBtn">Ödemeye Geç</button>
+  </div>
+</aside>
+
+<div
+  class="modal"
+  id="checkoutModal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="checkoutTitle"
+  aria-hidden="true"
+  inert
+>
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Pencereyi kapat">✕</button>
+    <div id="checkoutStep">
+      <h3 id="checkoutTitle">Siparişi Tamamla</h3>
+      <div class="order-summary" id="orderSummary"></div>
+      <form id="checkoutForm">
+        <div class="field">
+          <label for="checkout-name">Ad Soyad</label>
+          <input id="checkout-name" type="text" name="name" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="checkout-email">E-posta</label>
+          <input id="checkout-email" type="email" name="email" autocomplete="email" required placeholder="Erişim linki buraya gelecek" />
+        </div>
+        <p class="note">Ödeme demo modunda. Gerçek sitede iyzico / Stripe / Shopier entegrasyonu buraya bağlanacak.</p>
+        <button class="btn btn-primary btn-block" type="submit">Satın Al</button>
+      </form>
+    </div>
+    <div id="successStep" hidden>
+      <div class="success-icon">✓</div>
+      <h3>Siparişin alındı!</h3>
+      <p>Eğitim / paket erişim bilgisi e-posta adresine gönderildi.</p>
+      <button class="btn btn-primary btn-block" id="successClose" type="button">Tamam</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+{% endif %}
+<script type="application/json" id="products-data">{{ products | json | safe }}</script>
+<script type="application/json" id="site-data">{{ { whatsapp: site.whatsapp, cartEnabled: site.cartEnabled } | json | safe }}</script>

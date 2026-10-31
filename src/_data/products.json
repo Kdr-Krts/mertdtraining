@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "title": "Transformation — 1 Aylık",
+    "category": "transform",
+    "level": "1 Ay",
+    "price": 3000,
+    "desc": "İlk ayda alışkanlık, yağ yakımı ve temel kuvvet için kişiye özel başlangıç sistemi.",
+    "features": [
+      "Kişiye özel program",
+      "Haftalık güncellemeler",
+      "Uygulama videosu",
+      "WhatsApp destek",
+      "Beslenme önerileri"
+    ],
+    "color": ["#1a1a1d", "#686B77"],
+    "accent": "#B3B7BE",
+    "tag": "POPÜLER"
+  },
+  {
+    "id": 2,
+    "title": "Transformation — 3 Aylık",
+    "category": "transform",
+    "level": "3 Ay",
+    "price": 5500,
+    "desc": "Ölçülebilir yağ kaybı / kas kazanımı için 12 haftalık takip ve program güncellemesi.",
+    "features": [
+      "Kişiye özel program",
+      "Haftalık güncellemeler",
+      "Uygulama videosu",
+      "WhatsApp destek",
+      "Beslenme önerileri"
+    ],
+    "color": ["#1a1a1d", "#686B77"],
+    "accent": "#B3B7BE"
+  },
+  {
+    "id": 3,
+    "title": "Transformation — 6 Aylık",
+    "category": "transform",
+    "level": "6 Ay",
+    "price": 10000,
+    "desc": "Uzun dönem vücut kompozisyonu ve sürdürülebilir alışkanlık için en avantajlı paket.",
+    "features": [
+      "Kişiye özel program",
+      "Haftalık güncellemeler",
+      "Uygulama videosu",
+      "WhatsApp destek",
+      "Beslenme önerileri"
+    ],
+    "color": ["#1a1a1d", "#686B77"],
+    "accent": "#B3B7BE",
+    "tag": "EN AVANTAJLI"
+  },
+  {
+    "id": 4,
+    "title": "Athletic Performance — 1 Aylık",
+    "category": "athletic",
+    "level": "1 Ay",
+    "price": 4500,
+    "desc": "Sezon içi / kısa blok: kuvvet, hız ve mobilite odaklı 4 haftalık performans planı.",
+    "features": [
+      "Kişiye özel performans programı",
+      "Saha / branşa odaklı planlama",
+      "Video analiz & geri bildirim",
+      "WhatsApp destek",
+      "Mobilite, kuvvet, hız, çeviklik"
+    ],
+    "color": ["#0f1520", "#3b82f6"],
+    "accent": "#3b82f6"
+  },
+  {
+    "id": 5,
+    "title": "Athletic Performance — 3 Aylık",
+    "category": "athletic",
+    "level": "3 Ay",
+    "price": 11500,
+    "desc": "Müsabaka hazırlığı ve atletik kapasite için video analiz destekli 3 aylık sistem.",
+    "features": [
+      "Kişiye özel performans programı",
+      "Saha / branşa odaklı planlama",
+      "Video analiz & geri bildirim",
+      "WhatsApp destek",
+      "Mobilite, kuvvet, hız, çeviklik"
+    ],
+    "color": ["#0f1520", "#3b82f6"],
+    "accent": "#3b82f6"
+  },
+  {
+    "id": 6,
+    "title": "Athletic Performance — 6 Aylık",
+    "category": "athletic",
+    "level": "6 Ay",
+    "price": 19500,
+    "desc": "Sezon boyu performans yönetimi: periyodizasyon, yük takibi ve bireysel gelişim.",
+    "features": [
+      "Kişiye özel performans programı",
+      "Saha / branşa odaklı planlama",
+      "Video analiz & geri bildirim",
+      "WhatsApp destek",
+      "Mobilite, kuvvet, hız, çeviklik"
+    ],
+    "color": ["#0f1520", "#3b82f6"],
+    "accent": "#3b82f6",
+    "tag": "PRO"
+  },
+  {
+    "id": 7,
+    "title": "Sıçrama Programı",
+    "category": "mikro",
+    "level": "Mikro",
+    "price": 490,
+    "desc": "Dikey sıçrama ve patlayıcı güç için kısa süreli plyometrik odaklı çalışma.",
+    "features": ["Online sunum", "Eğitim materyalleri dahil", "Sıçrama teknikleri"],
+    "color": ["#1a120c", "#e07a3d"],
+    "accent": "#e07a3d"
+  },
+  {
+    "id": 8,
+    "title": "Çeviklik Programı",
+    "category": "mikro",
+    "level": "Mikro",
+    "price": 490,
+    "desc": "Yön değiştirme, ayak çevikliği ve reaktif hız için branşa uyarlanabilir mikro blok.",
+    "features": ["Online sunum", "Eğitim materyalleri dahil", "Drill progressions"],
+    "color": ["#1a120c", "#e07a3d"],
+    "accent": "#e07a3d"
+  },
+  {
+    "id": 9,
+    "title": "Branşa Özel Program",
+    "category": "mikro",
+    "level": "Mikro",
+    "price": 690,
+    "desc": "Basketbol, voleybol veya branşına özel fiziksel ihtiyaçlara göre kısa program.",
+    "features": ["Online sunum", "Eğitim materyalleri dahil", "Branş analizi"],
+    "color": ["#1a120c", "#e07a3d"],
+    "accent": "#e07a3d"
+  },
+  {
+    "id": 10,
+    "title": "Pas Çalışması",
+    "category": "mikro",
+    "level": "Mikro",
+    "price": 490,
+    "desc": "Pas isabeti, tempo ve baskı altında karar için top hakimiyeti odaklı mikro paket.",
+    "features": ["Online sunum", "Eğitim materyalleri dahil", "Pas progressions"],
+    "color": ["#1a120c", "#e07a3d"],
+    "accent": "#e07a3d"
+  },
+  {
+    "id": 11,
+    "title": "Handle Programı",
+    "category": "mikro",
+    "level": "Mikro",
+    "price": 490,
+    "desc": "Top sürme, çift el hakimiyeti ve yaratıcı handle becerileri için kısa yoğunluklu paket.",
+    "features": ["Online sunum", "Eğitim materyalleri dahil", "Handle drill setleri"],
+    "color": ["#1a120c", "#e07a3d"],
+    "accent": "#e07a3d"
+  },
+  {
+    "id": 12,
+    "title": "Kuvvet & Mobilite",
+    "category": "mikro",
+    "level": "Mikro",
+    "price": 590,
+    "desc": "Eklem mobilitesi ve temel kuvveti dengeleyen, sakatlık riskini azaltmaya yönelik mikro program.",
+    "features": ["Online sunum", "Eğitim materyalleri dahil", "Mobilite + kuvvet akışı"],
+    "color": ["#1a120c", "#e07a3d"],
+    "accent": "#e07a3d"
+  }
+]

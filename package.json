@@ -1,0 +1,20 @@
+{
+  "name": "mert-duman",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MERTDTRAİNİNG — fitness, vücut dönüşümü ve atletik performans",
+  "scripts": {
+    "fonts": "node scripts/copy-fonts.mjs",
+    "images": "node scripts/optimize-images.mjs",
+    "prebuild": "npm run fonts && npm run images",
+    "build": "eleventy",
+    "dev": "npm run fonts && npm run images && eleventy --serve --port=5188",
+    "start": "eleventy --serve --port=5188"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "@fontsource/dm-sans": "^5.3.0",
+    "@fontsource/oswald": "^5.3.0",
+    "sharp": "^0.33.5"
+  }
+}

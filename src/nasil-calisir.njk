@@ -1,0 +1,85 @@
+---
+layout: base.njk
+title: Nasıl Çalışır & SSS | MERTDTRAİNİNG
+description: "Online koçluk süreci adım adım: değerlendirme, planlama, takip. Sık sorulan sorular."
+active: nasil.html
+permalink: /nasil-calisir/
+---
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">Süreç</span>
+    <h1>Nasıl Çalışır?</h1>
+    <p>Net adımlar, kişiye özel plan ve düzenli takip — tahmin değil, sistem.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Adımlar</span>
+      <h2>4 aşamalı yol</h2>
+    </div>
+    <ol class="steps">
+      <li class="step">
+        <span class="step-num">01</span>
+        <h3>Değerlendirme</h3>
+        <p>Hedefin, geçmişin, sakatlık öykün ve mevcut antrenman durumun netleştirilir.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <h3>Planlama</h3>
+        <p>Sana özel program, tempo ve gerekirse beslenme çerçevesi birlikte kurulur.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <h3>Uygulama</h3>
+        <p>Online materyal ve video destekleriyle uygulamaya geçersin; soruların WhatsApp’tan yanıtlanır.</p>
+      </li>
+      <li class="step">
+        <span class="step-num">04</span>
+        <h3>Takip & güncelleme</h3>
+        <p>İlerleme ölçülür, plan haftalık / dönemsel olarak güncellenir; sürdürülebilir gelişim hedeflenir.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">SSS</span>
+      <h2>Sık sorulan sorular</h2>
+    </div>
+    <div class="faq">
+      {% for item in faq %}
+      <details class="faq-item">
+        <summary>{{ item.q }}</summary>
+        <p>{{ item.a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+    <div class="about-teaser-cta" style="margin-top:40px">
+      <a href="/egitimler/" class="btn btn-primary">Paketleri İncele</a>
+      <a href="/iletisim/" class="btn btn-ghost">Soru Sor</a>
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for item in faq %}
+    {
+      "@type": "Question",
+      "name": {{ item.q | json | safe }},
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ item.a | json | safe }}
+      }
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
